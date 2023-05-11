@@ -1,12 +1,29 @@
 <template>
-  <header></header>
+  <NavBar></NavBar>
+  <!-- Existe também um "componente genérico" chamado "component" -->
+  <component is="NavBar"></component>
+  <header>
+    <Cabecalho />
+    <cabecalho></cabecalho>
+    <Cabecalho></Cabecalho>
+  </header>
 
   <main></main>
 </template>
 
-<script setup></script>
+<script setup>
+import Cabecalho from "./components/Cabecalho.vue";
+//import NavBar from "./components/NavBar.vue";
+/* O componente "NavBar.vue" agora está de forma global, no main.js */
+</script>
 
-<style scoped>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 header {
   line-height: 1.5;
 }
