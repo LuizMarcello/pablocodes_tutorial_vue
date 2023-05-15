@@ -11,7 +11,9 @@
   </header>
 
   <main>
-    <Usuario />
+    <UsuarioPropsComputed />
+    <!-- <UsuarioCiclosDeVida /> -->
+    <!-- <Usuario /> -->
     <!-- <Usuario></Usuario> -->
     <!-- <usuario></usuario> -->
   </main>
@@ -19,8 +21,11 @@
 
 <script setup>
 import Cabecalho from "./components/Cabecalho.vue";
-import Usuario from "./components/Usuario.vue";
+//import Usuario from "./components/UsuarioReactive.vue";
+//import Usuario from "./components/UsuarioRef.vue";
 //import NavBar from "./components/NavBar.vue";
+//import UsuarioCiclosDeVida from "./components/UsuarioCiclosDeVida.vue";
+import UsuarioPropsComputed from "./components/UsuarioPropsComputed.vue";
 /* O componente "NavBar.vue" agora está de forma global, no main.js */
 </script>
 

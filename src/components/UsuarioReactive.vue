@@ -20,18 +20,9 @@
 
 <script setup>
 /* Reatividade do vueJS */
-/* O "ref" é mais específico para tipos primitivos,
-   como numero, booleano. */
+
 /* O "reactive" é mais focado em objetos. */
 import { ref, reactive } from "vue";
-//const nome = ref("Pablo Codes");
-//const dataNascimento = ref(0);
-//const idade = ref(25);
-
-/* Para alterar estas propriedades */
-//console.log(idade.value);
-//idade.value = 27;
-//console.log(idade.value);
 
 /* Criando o objeto "pessoa" */
 const pessoa = reactive({
