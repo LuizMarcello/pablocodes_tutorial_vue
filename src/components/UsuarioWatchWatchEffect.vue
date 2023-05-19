@@ -8,15 +8,6 @@
       v-model="codigoUsuario"
     />
   </form>
-  <!-- Habilita o botão, conforme a propriedade
-       computada "habilitaBotao" abaixo -->
-  <button
-    v-bind:disabled="!habilitaBotao"
-    v-on:click="pesquisaInformacoes"
-    class="botao"
-  >
-    Buscar
-  </button>
   <div class="perfil">
     <img v-bind:src="pessoa.avatar" alt="Perfil" />
     <strong>{{ nomeCompleto }}</strong>
@@ -25,11 +16,6 @@
 </template>
 
 <script setup>
-/* As propriedades computadas são armazenadas em cache */
-/* Reatividade do vueJS */
-/* O "ref" é mais específico para tipos primitivos,
-   como numero, booleano. */
-
 import {
   ref,
   reactive,
@@ -45,21 +31,13 @@ const codigoUsuario = ref(0);
 
 /* Componente montado */
 onMounted(async () => {
-  pessoa.value = await buscaInformacoes();
+  pessoa.value = await buscaInformacoes(1);
 });
 
 /* Propriedade computada */
 const nomeCompleto = computed(
   () => `${pessoa.value.first_name} ${pessoa.value.last_name}`
 );
-
-/* Para habilitar o botão "Buscar" */
-/* Propriedade computada */
-const habilitaBotao = computed(() => codigoUsuario.value > 0);
-
-const pesquisaInformacoes = async () => {
-  pessoa.value = await buscaInformacoes(codigoUsuario.value);
-};
 
 /* Usando json para retornar informações da API fake "reqres.in" */
 const buscaInformacoes = async (codigo) => {
@@ -72,24 +50,26 @@ const buscaInformacoes = async (codigo) => {
     mais específica, sempre que ela mudar. */
 /* Função de callback que recebe dois argumentos:
    Vai ouvir a propriedade "codigoUsuario" */
-//watch(codigoUsuario, (novo, antigo) => {
-// watch([codigoUsuario, pessoa], ([novo, antigo], [pessoaNovo, pessoaAntigo]) => {
-//   //console.log(novo, antigo);
-//   if (novo <= 0) {
-//     alert("Código inválido");
-//     codigoUsuario.value = 0;
-//   }
-// });
+   watch(codigoUsuario, (novo, antigo) => {
+  //watch([codigoUsuario, pessoa], ([novo, antigo], [pessoaNovo, pessoaAntigo]) => {
+  //console.log(novo, antigo);
+  if (novo <= 0) {
+    alert("Código inválido");
+    //codigoUsuario.value = 0;
+  }
+});
 
 /* Função que recebe uma função de retôrno(callback) como argumento,
    que é executada imediatamente, sempre que uma de suas dependências
-   é alterada. */
-watchEffect(() => {
-  if (codigoUsuario <= 0) {
-    alert("Código inválido");
-    codigoUsuario.value = 0;
-  }
+   é alterada. Ele é executado também automaticamente quando o componente
+   inicia(Ele nem precisa do "OnMounted()"). Ele é mais indicado para quando
+   um conjunto de proprieades podem mudar em conjunto, como em objeto inteiro,
+   em vez de apenas uma propriedade. */
+watchEffect(async () => {
+  pessoa.value = await buscaInformacoes(codigoUsuario.value || 5);
 });
+
+
 </script>
 
 <style scoped>
