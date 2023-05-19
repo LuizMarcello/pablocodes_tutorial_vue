@@ -11,7 +11,8 @@
   </header>
 
   <main>
-    <UsuarioPropsComputed />
+    <UsuarioWatchWatchEffect />
+    <!-- <UsuarioPropsComputed /> -->
     <!-- <UsuarioCiclosDeVida /> -->
     <!-- <Usuario /> -->
     <!-- <Usuario></Usuario> -->
@@ -25,7 +26,9 @@ import Cabecalho from "./components/Cabecalho.vue";
 //import Usuario from "./components/UsuarioRef.vue";
 //import NavBar from "./components/NavBar.vue";
 //import UsuarioCiclosDeVida from "./components/UsuarioCiclosDeVida.vue";
-import UsuarioPropsComputed from "./components/UsuarioPropsComputed.vue";
+//import UsuarioPropsComputed from "./components/UsuarioPropsComputed.vue";
+//import UsuarioPropsComputed from "./components/UsuarioPropsComputed.vue";
+import UsuarioWatchWatchEffect from "./components/UsuarioWatchWatchEffect.vue";
 /* O componente "NavBar.vue" agora está de forma global, no main.js */
 </script>
 
