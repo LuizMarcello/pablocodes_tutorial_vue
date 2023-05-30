@@ -1,13 +1,17 @@
 <template>
-  <form class="formulario">
+  <form class="formulario" v-on:submit.prevent="chamaAlerta">
     <label for="codigoUsuario">Código Usuário</label><br />
     <input
       type="text"
       id="codigoUsuario"
       name="codigoUsuario"
       v-model="codigoUsuario"
+      
     />
   </form>
+
+  <!-- <button @:click="chamaAlerta" class="botao">Buscar</button> -->
+
   <div class="perfil">
     <img v-bind:src="pessoa.avatar" alt="Perfil" />
     <strong>{{ nomeCompleto }}</strong>
@@ -50,7 +54,7 @@ const buscaInformacoes = async (codigo) => {
     mais específica, sempre que ela mudar. */
 /* Função de callback que recebe dois argumentos:
    Vai ouvir a propriedade "codigoUsuario" */
-   watch(codigoUsuario, (novo, antigo) => {
+watch(codigoUsuario, (novo, antigo) => {
   //watch([codigoUsuario, pessoa], ([novo, antigo], [pessoaNovo, pessoaAntigo]) => {
   //console.log(novo, antigo);
   if (novo <= 0) {
@@ -69,7 +73,15 @@ watchEffect(async () => {
   pessoa.value = await buscaInformacoes(codigoUsuario.value || 5);
 });
 
+const chamaAlerta = () => {
+  alert("evento disparado");
+};
 
+/* Pegando a diretiva "@input" do formulário
+   e pegando o input do formulário */
+const imprimi = (event) => {
+  alert(event.target.value);
+};
 </script>
 
 <style scoped>

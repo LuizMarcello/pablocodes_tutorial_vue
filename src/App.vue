@@ -1,5 +1,8 @@
 <template>
-  <NavBar />
+  <!-- Diretiva "v-once": Vai renderizar uma única vêz,
+       depois fica como estático. Ex: Rodapé. Muito bom
+       para desempenho. -->
+  <NavBar v-once></NavBar>
   <!--  <NavBar></NavBar> -->
   <!-- <navBar></navBar> -->
   <!-- Existe também um "componente genérico" chamado "component" -->
@@ -11,7 +14,8 @@
   </header>
 
   <main>
-    <UsuarioWatchWatchEffect />
+    <ListaUsuario />
+    <!-- <UsuarioWatchWatchEffect /> -->
     <!-- <UsuarioPropsComputed /> -->
     <!-- <UsuarioCiclosDeVida /> -->
     <!-- <Usuario /> -->
@@ -22,6 +26,7 @@
 
 <script setup>
 import Cabecalho from "./components/Cabecalho.vue";
+import ListaUsuario from "./components/ListaUsuario.vue";
 //import Usuario from "./components/UsuarioReactive.vue";
 //import Usuario from "./components/UsuarioRef.vue";
 //import NavBar from "./components/NavBar.vue";

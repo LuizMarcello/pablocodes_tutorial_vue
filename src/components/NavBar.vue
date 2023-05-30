@@ -2,32 +2,38 @@
   <nav>
     <span>Tutorial Vue</span>
     <ul>
-      <li><a href="">Home</a></li>
-      <li><a href="">Sobre</a></li>
-      <li><a href="">Login</a></li>
+      <li v-for="menu in menuss" :key="menu.id">
+        <a href="#">{{ menu.nome }}</a>
+      </li>
     </ul>
   </nav>
 </template>
 
-<script setup></script>
+<script setup>
+const menuss = [
+  { id: 1, nome: "Home" },
+  { id: 2, nome: "Sobre" },
+  { id: 3, nome: "Login" },
+];
+</script>
 
 <style scoped>
 nav {
-padding: 5px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-background: #cae7e8;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #cae7e8;
 }
 ul {
-    display: flex;
-list-style-type: none;
+  display: flex;
+  list-style-type: none;
 }
 ul li {
-padding: 0 5px;
+  padding: 0 5px;
 }
 ul li a {
-    text-decoration: none;
-    color: #117177;
+  text-decoration: none;
+  color: #117177;
 }
 </style>
