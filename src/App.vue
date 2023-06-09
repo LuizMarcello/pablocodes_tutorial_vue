@@ -33,7 +33,7 @@ import ListaUsuario from "./components/ListaUsuario.vue";
 //import UsuarioCiclosDeVida from "./components/UsuarioCiclosDeVida.vue";
 //import UsuarioPropsComputed from "./components/UsuarioPropsComputed.vue";
 //import UsuarioPropsComputed from "./components/UsuarioPropsComputed.vue";
-import UsuarioWatchWatchEffect from "./components/UsuarioWatchWatchEffect.vue";
+//import UsuarioWatchWatchEffect from "./components/UsuarioWatchWatchEffect.vue";
 /* O componente "NavBar.vue" agora está de forma global, no main.js */
 </script>
 

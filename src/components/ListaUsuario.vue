@@ -2,11 +2,13 @@
   <div class="pessoas">
     <div class="perfil" v-for="pessoa in pessoas" :key="pessoa.id">
       <h3 style="color: red" v-if="pessoa.first_name === 'George'">Gerente</h3>
-      <h3 style="color: green" v-else-if="pessoa.first_name === 'Rachel'">Supervisora</h3>
+      <h3 style="color: green" v-else-if="pessoa.first_name === 'Rachel'">
+        Supervisora
+      </h3>
       <h3 style="color: blue" v-else>Operacional</h3>
       <img v-bind:src="pessoa.avatar" alt="Perfil" />
       <strong>{{ pessoa.first_name }}</strong>
-      <span style="font-size: 10px">{{ pessoa.email }}</span>
+      <span style="font-size: 10px" v-email="pessoa.email"></span>
     </div>
   </div>
 </template>
@@ -21,12 +23,12 @@ import {
   reactive,
   /* Componente montado */
   onMounted,
-  computed,
+  computed
 } from "vue";
 
 const pessoas = ref([]);
 
-/* Componente montado */
+/* Com o componente montado */
 onMounted(async () => {
   pessoas.value = await buscaInformacoes();
 });
@@ -37,6 +39,17 @@ const buscaInformacoes = async () => {
   const json = await req.json();
   return json.data;
 };
+
+/* Foi transformada em "global" no "main.js" */
+/* Criando a diretiva personalizada "local" "v-email" */
+//const vEmail = {
+//created(el, biding) {
+//el.style.color = "blue";
+/* Tendo acesso ao elemento "el" */
+//console.log(el.innerText);
+//el.innerHTML = `<a hef="mailto:${biding.value}">${biding.value}</a>`;
+//}
+//};
 </script>
 
 <style scoped>
