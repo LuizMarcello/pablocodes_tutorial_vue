@@ -56,6 +56,7 @@ const buscaInformacoes = async () => {
 .pessoas {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .perfil {
   width: 150px;
