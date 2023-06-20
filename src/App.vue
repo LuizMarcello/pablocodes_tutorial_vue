@@ -14,7 +14,8 @@
   </header>
 
   <main>
-    <ListaUsuario />
+    <Usuario />
+    <!-- <ListaUsuario /> -->
     <!-- <UsuarioWatchWatchEffect /> -->
     <!-- <UsuarioPropsComputed /> -->
     <!-- <UsuarioCiclosDeVida /> -->
@@ -26,7 +27,8 @@
 
 <script setup>
 import Cabecalho from "./components/Cabecalho.vue";
-import ListaUsuario from "./components/ListaUsuario.vue";
+//import ListaUsuario from "./components/ListaUsuario.vue";
+import Usuario from "./components/Usuario.vue";
 //import Usuario from "./components/UsuarioReactive.vue";
 //import Usuario from "./components/UsuarioRef.vue";
 //import NavBar from "./components/NavBar.vue";
