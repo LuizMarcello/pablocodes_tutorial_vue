@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@vueuse/components": "^10.1.2",
-    "@vueuse/core": "^10.1.2",
+    "@vueuse/core": "^10.2.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {

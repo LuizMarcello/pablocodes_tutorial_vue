@@ -1,27 +1,41 @@
 <template>
+  <div class="selecionados">
+    <span v-for="pm in pessoasSelecionadas" :key="pm.id" class="card">{{
+      pm.first_name
+    }}</span>
+  </div>
   <div class="pessoas">
-    <Usuario />
+    <UsuarioEmit
+      v-for="pessoooa in pessoas"
+      :key="pessoooa.id"
+      v-bind:pessoaaa="pessoooa"
+      @selecccao="adicionaSelecao"
+    ></UsuarioEmit>
   </div>
 </template>
 
-
 <script setup>
-/* As propriedades computadas são armazenadas em cache */
-/* Reatividade do vueJS */
-/* O "ref" é mais específico para tipos primitivos,
-   como numero, booleano. */
-import {
-  ref,
-  reactive,
-  /* Componente montado */
-  onMounted,
-  computed,
-} from "vue";
+import { ref, onMounted, watchEffect } from "vue";
 
-import Usuario from "./Usuario.vue";
+import UsuarioEmit from "./UsuarioEmit.vue";
 
 const pessoas = ref([]);
-//const idsSelecao = ref([]);
+const idsSelecao = ref([]);
+const pessoasSelecionadas = ref([]);
+
+const adicionaSelecao = (evento) => {
+  idsSelecao.value.push(evento);
+};
+
+watchEffect(() => {
+  /* "pessoasSelecionadas" vai receber o "id",
+        mas somente se ele existir */
+  pessoasSelecionadas.value = pessoas.value.filter((x) =>
+    /* "idsSelecao" contém todos os "ids" */
+    /* "includes" verifica se contém este "id" */
+    idsSelecao.value.includes(x.id)
+  );
+});
 
 /* Usando json para retornar informações da API fake "reqres.in" */
 const buscaInformacoes = async () => {
@@ -34,26 +48,7 @@ const buscaInformacoes = async () => {
 onMounted(async () => {
   pessoas.value = await buscaInformacoes();
 });
-
-//const adicionaSelecao = (evento) => {
-//idsSelecao.value.push(evento);
-
-//};
-
-
-
-/* Foi transformada em "global" no "main.js" */
-/* Criando a diretiva personalizada "local" "v-email" */
-//const vEmail = {
-//created(el, biding) {
-//el.style.color = "blue";
-/* Tendo acesso ao elemento "el" */
-//console.log(el.innerText);
-//el.innerHTML = `<a hef="mailto:${biding.value}">${biding.value}</a>`;
-//}
-//};
 </script>
-
 
 <style scoped>
 .pessoas {

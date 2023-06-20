@@ -1,27 +1,19 @@
 <template>
   <div class="pessoas">
-    <Usuario />
+    <UsuarioProps
+      v-for="pessoooa in pessoas"
+      :key="pessoooa.id"
+      v-bind:pessoaaa="pessoooa"
+    ></UsuarioProps>
   </div>
 </template>
 
-
 <script setup>
-/* As propriedades computadas são armazenadas em cache */
-/* Reatividade do vueJS */
-/* O "ref" é mais específico para tipos primitivos,
-   como numero, booleano. */
-import {
-  ref,
-  reactive,
-  /* Componente montado */
-  onMounted,
-  computed,
-} from "vue";
+import { ref, onMounted } from "vue";
 
-import Usuario from "./Usuario.vue";
+import UsuarioProps from "./UsuarioProps.vue";
 
 const pessoas = ref([]);
-//const idsSelecao = ref([]);
 
 /* Usando json para retornar informações da API fake "reqres.in" */
 const buscaInformacoes = async () => {
@@ -34,26 +26,7 @@ const buscaInformacoes = async () => {
 onMounted(async () => {
   pessoas.value = await buscaInformacoes();
 });
-
-//const adicionaSelecao = (evento) => {
-//idsSelecao.value.push(evento);
-
-//};
-
-
-
-/* Foi transformada em "global" no "main.js" */
-/* Criando a diretiva personalizada "local" "v-email" */
-//const vEmail = {
-//created(el, biding) {
-//el.style.color = "blue";
-/* Tendo acesso ao elemento "el" */
-//console.log(el.innerText);
-//el.innerHTML = `<a hef="mailto:${biding.value}">${biding.value}</a>`;
-//}
-//};
 </script>
-
 
 <style scoped>
 .pessoas {

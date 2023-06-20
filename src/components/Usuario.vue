@@ -1,62 +1,35 @@
 <template>
-  <div class="pessoas">
-    <div class="perfil" v-for="pessoa in pessoas" :key="pessoa.id">
-      <h3 style="color: red" v-if="pessoa.first_name === 'George'">Gerente</h3>
-      <h3 style="color: green" v-else-if="pessoa.first_name === 'Rachel'">
-        Supervisora
-      </h3>
-      <h3 style="color: blue" v-else>Operacional</h3>
-      <img v-bind:src="pessoa.avatar" alt="Perfil" />
-      <strong>{{ pessoa.first_name }}</strong>
-      <span style="font-size: 10px" v-email="pessoa.email"></span>
-      <!-- "emit": Do componente "filho" para o "pai" -->
-      <button class="botao" @click="enviaEmit(pessoa.id)">Selecionar</button>
-    </div>
+  <div class="perfil">
+    <img :src="pessoa.avatar" alt="Perfil" />
+    <strong>{{ nomeCompleto }}</strong>
+    <span>{{ pessoa.email }}</span>
   </div>
 </template>
+
 
 <script setup>
 import {
   ref,
   reactive,
-  /* Componente montado */
+  
   onMounted,
-  computed
+  computed,
 } from "vue";
-
-const pessoas = ref({});
 
 /* Passando como argumento, um array, com eventos personalizados, 
    para o componente pai */
-const emit = defineEmits(["seleccao"]);
+//const emit = defineEmits(["seleccao"]);
 
-const enviaEmit = (id) => {
-  emit("seleccao", id);
-  
-};
-
-defineProps({
-  pessoa: {
-    
-  }
-})
-
-/* Com o componente montado */
-onMounted(async () => {
-  pessoas.value = await buscaInformacoes();
-});
-
-/* Usando json para retornar informações da API fake "reqres.in" */
-const buscaInformacoes = async () => {
-  const req = await fetch(`https://reqres.in/api/users?page=2`);
-  const json = await req.json();
-  return json.data;
-};
+//const enviaEmit = (id) => {
+//emit("seleccao", id);
+//debugger;
+//};
 
 /* Passando como argumento, um array, com eventos personalizados, 
    para o componente pai */
 //defineEmits(["selecccao"]);
 </script>
+
 
 <style scoped>
 .pessoas {

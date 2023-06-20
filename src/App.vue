@@ -14,8 +14,10 @@
   </header>
 
   <main>
-    <Usuario />
-    <!-- <ListaUsuario /> -->
+     <UsuarioProps />
+    <!-- <UsuarioEmit /> -->
+    <!-- <ListaUsuarioProps /> -->
+    <ListaUsuarioEmit />
     <!-- <UsuarioWatchWatchEffect /> -->
     <!-- <UsuarioPropsComputed /> -->
     <!-- <UsuarioCiclosDeVida /> -->
@@ -27,8 +29,10 @@
 
 <script setup>
 import Cabecalho from "./components/Cabecalho.vue";
-//import ListaUsuario from "./components/ListaUsuario.vue";
-import Usuario from "./components/Usuario.vue";
+//import ListaUsuarioProps from "./components/ListaUsuarioProps.vue";
+import ListaUsuarioEmit from "./components/ListaUsuarioEmit.vue";
+//import UsuarioEmit from "./components/UsuarioEmit.vue";
+//import UsuarioProps from "./components/UsuarioProps.vue";
 //import Usuario from "./components/UsuarioReactive.vue";
 //import Usuario from "./components/UsuarioRef.vue";
 //import NavBar from "./components/NavBar.vue";
