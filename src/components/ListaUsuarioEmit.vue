@@ -9,6 +9,7 @@
       v-for="pessoooa in pessoas"
       :key="pessoooa.id"
       v-bind:pessoaaa="pessoooa"
+      :seleeecao="idSelecionado(pessoooa.id)"
       @selecccao="adicionaSelecao"
     ></UsuarioEmit>
   </div>
@@ -24,18 +25,28 @@ const idsSelecao = ref([]);
 const pessoasSelecionadas = ref([]);
 
 const adicionaSelecao = (evento) => {
+  if (idSelecionado(evento)) {
+    idsSelecao.value = idsSelecao.value.filter((x) => x !== evento);
+    return;
+  }
   idsSelecao.value.push(evento);
 };
 
 watchEffect(() => {
-  /* "pessoasSelecionadas" vai receber o "id",
-        mas somente se ele existir */
+  /* "pessoasSelecionadas" vai recebendo os "ids",
+      selecionados. */
   pessoasSelecionadas.value = pessoas.value.filter((x) =>
-    /* "idsSelecao" contém todos os "ids" */
-    /* "includes" verifica se contém este "id" */
-    idsSelecao.value.includes(x.id)
+    /* "idsSelecao" contém todos os "ids" já selecionados */
+    /* "includes" verifica se já contém o novo "id" selecionado. */
+    idSelecionado(x.id)
   );
 });
+
+/* Retorna "true" ou "false", se o id já foi
+   selecionado, ou não. */
+const idSelecionado = (id) => {
+  return idsSelecao.value.includes(id);
+};
 
 /* Usando json para retornar informações da API fake "reqres.in" */
 const buscaInformacoes = async () => {
@@ -80,5 +91,17 @@ onMounted(async () => {
   border-radius: 5px;
   border-style: none;
   cursor: pointer;
+}
+.selecionados {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.selecionados > span {
+  background: #6fd6d6;
+  padding: 5px;
+  font-size: 0.785rem;
+  border-radius: 5px;
 }
 </style>

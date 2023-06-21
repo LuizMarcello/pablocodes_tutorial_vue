@@ -4,7 +4,9 @@
     <img :src="pessoaaa.avatar" alt="Perfil" />
     <strong>{{ pessoaaa.first_name }}</strong>
     <span>{{ pessoaaa.email }}</span>
-    <button class="botao" @click="enviaEmit(pessoaaa.id)">Selecionar</button>
+    <button class="botao" @click="enviaEmit(pessoaaa.id)">
+      {{ !seleeecao ? "Selecionar" : "Desmarcar" }}
+    </button>
   </div>
 </template>
 
@@ -19,7 +21,7 @@ defineProps({
   /* Aqui também, outro objeto, de configurações */
   pessoaaa: {
     /* O tipo da props */
-    type: Object,
+    type: Object
     /* a props é obrigatória */
     //required: true,
     /* Valores default */
@@ -31,6 +33,7 @@ defineProps({
     //email: "",
     //}),
   },
+  seleeecao: Boolean
 });
 
 /* "Emit": de componente "filho" para o "pai" */
