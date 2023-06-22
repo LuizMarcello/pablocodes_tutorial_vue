@@ -17,12 +17,17 @@
 
 <script setup>
 import { ref, onMounted, watchEffect } from "vue";
-
 import UsuarioEmit from "./UsuarioEmit.vue";
+/* Para enviar dados deste componente pai para os filhos */
+import { provide } from "vue";
 
 const pessoas = ref([]);
 const idsSelecao = ref([]);
 const pessoasSelecionadas = ref([]);
+const aviso = "Em caso de dúvidas, contate o suporte";
+
+/* Criando aqui um "provide" */
+provide("aviso", aviso);
 
 const adicionaSelecao = (evento) => {
   if (idSelecionado(evento)) {

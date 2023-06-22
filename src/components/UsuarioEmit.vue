@@ -7,11 +7,13 @@
     <button class="botao" @click="enviaEmit(pessoaaa.id)">
       {{ !seleeecao ? "Selecionar" : "Desmarcar" }}
     </button>
+    <Aviso />
   </div>
 </template>
 
 <script setup>
-import {} from "vue";
+/* Importando este componente */
+import Aviso from "./Aviso.vue";
 
 /* "Props": de componente "pai" para "filho" */
 /* As "props" são somente leitura */
@@ -21,7 +23,7 @@ defineProps({
   /* Aqui também, outro objeto, de configurações */
   pessoaaa: {
     /* O tipo da props */
-    type: Object
+    type: Object,
     /* a props é obrigatória */
     //required: true,
     /* Valores default */
@@ -33,7 +35,7 @@ defineProps({
     //email: "",
     //}),
   },
-  seleeecao: Boolean
+  seleeecao: Boolean,
 });
 
 /* "Emit": de componente "filho" para o "pai" */
