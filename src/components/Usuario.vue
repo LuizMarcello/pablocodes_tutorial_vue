@@ -6,15 +6,8 @@
   </div>
 </template>
 
-
 <script setup>
-import {
-  ref,
-  reactive,
-  
-  onMounted,
-  computed,
-} from "vue";
+import { ref, reactive, onMounted, computed } from "vue";
 
 /* Passando como argumento, um array, com eventos personalizados, 
    para o componente pai */
@@ -29,7 +22,6 @@ import {
    para o componente pai */
 //defineEmits(["selecccao"]);
 </script>
-
 
 <style scoped>
 .pessoas {

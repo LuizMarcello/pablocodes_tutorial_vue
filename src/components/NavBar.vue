@@ -1,19 +1,20 @@
 <template>
   <nav>
-    <span>Tutorial Vue</span>
+    <span>Tutorial Vue do navbar</span>
     <ul>
-      <li v-for="menu in menuss" :key="menu.id">
-        <a href="#">{{ menu.nome }}</a>
+      <li v-for="menu in menusss" :key="menu.id">
+        <!--  <a href="#">{{ menu.nome }}</a> -->
+        <router-link :to="menu.path">{{ menu.nome }}</router-link>
       </li>
     </ul>
   </nav>
 </template>
 
 <script setup>
-const menuss = [
-  { id: 1, nome: "Home" },
-  { id: 2, nome: "Sobre" },
-  { id: 3, nome: "Login" },
+/* Um array de objetos */
+const menusss = [
+  { id: 1, nome: "Home", path: "/" },
+  { id: 2, nome: "Equipe", path: "/equipe" }
 ];
 </script>
 

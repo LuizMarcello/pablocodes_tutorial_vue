@@ -4,20 +4,36 @@
       pm.first_name
     }}</span>
   </div>
+  <!-- <div v-if="carregando">
+    <h3>Carregando...</h3>
+  </div> -->
+  <!-- <div class="pessoas" v-else> -->
   <div class="pessoas">
-    <UsuarioEmit
-      v-for="pessoooa in pessoas"
-      :key="pessoooa.id"
-      v-bind:pessoaaa="pessoooa"
-      :seleeecao="idSelecionado(pessoooa.id)"
-      @selecccao="adicionaSelecao"
-    ></UsuarioEmit>
+    <div v-for="pessoooa in pessoas" :key="pessoooa.id" v-if="!error">
+      <button @click="redirecionaFuncionario(pessoooa.id)">
+        Ver funcionário
+      </button>
+      <UsuarioEmit
+        v-bind:pessoaaa="pessoooa"
+        :seleeecao="idSelecionado(pessoooa.id)"
+        @selecccao="adicionaSelecao"
+      ></UsuarioEmit>
+    </div>
+    <div v-else>
+      {{ error }}
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, watchEffect } from "vue";
 import UsuarioEmit from "./UsuarioEmit.vue";
+/* Tem a ver com rotas(rotear) */
+import { useRouter } from "vue-router";
+
+/* Inicializando */
+const router = useRouter();
+
 /* Para enviar dados deste componente pai para os filhos */
 import { provide } from "vue";
 
@@ -51,6 +67,10 @@ watchEffect(() => {
    selecionado, ou não. */
 const idSelecionado = (id) => {
   return idsSelecao.value.includes(id);
+};
+
+const redirecionaFuncionario = (id) => {
+  router.push(`/equipe/${id}`);
 };
 
 /* Usando json para retornar informações da API fake "reqres.in" */

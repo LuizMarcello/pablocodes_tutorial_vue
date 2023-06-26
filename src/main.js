@@ -1,11 +1,17 @@
+/* Este é o arquivo "principal" da aplicação */
 /* import './assets/main.css' */
-
 import {
   createApp
 } from "vue";
+import {
+  createPinia
+} from "pinia";
 import App from "./App.vue";
 import NavBar from "./components/NavBar.vue";
+import router from "./router";
 
+/* Inicializando */
+const pinia = createPinia()
 
 /* Armazenando o "createApp" dentro de uma variável  */
 const app = createApp(App);
@@ -20,6 +26,9 @@ app.directive("email", {
   },
 });
 
+/* Adicionando */
+app.use(router)
+app.use(pinia)
 app.mount("#app");
 
 //createApp(App).mount('#app')
