@@ -9,4 +9,4 @@
 import ListaUsuarioEmit from "../components/ListaUsuarioEmit.vue";
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

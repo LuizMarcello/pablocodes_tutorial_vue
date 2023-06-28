@@ -3,7 +3,7 @@
        depois fica como estático. Ex: Rodapé. Muito bom
        para desempenho. -->
   <!-- <NavBar v-once></NavBar> -->
-   <NavBar></NavBar>
+  <NavBar></NavBar>
   <!-- <navBar></navBar> -->
   <!-- Existe também um "componente genérico" chamado "component" -->
   <!-- <component is="NavBar"></component> -->
@@ -16,7 +16,7 @@
   <main>
     <!-- <UsuarioProps /> -->
     <!-- <UsuarioEmit /> -->
-   <!--  <ListaUsuarioProps /> -->
+    <!--  <ListaUsuarioProps /> -->
     <!-- <ListaUsuarioEmit /> -->
     <Usuario />
     <!-- <ListaUsuario /> -->

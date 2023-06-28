@@ -45,7 +45,10 @@ import { ref, reactive, onMounted, computed } from "vue";
   display: block;
   font-size: 0.75rem;
 }
-.botao {
+/* Para transformar esta classe css, dentro
+   de "scoped", em classe global. */
+/* .botao { */
+/* :global(.botao) {
   margin: 5px auto;
   padding: 5px;
   display: block;
@@ -53,5 +56,5 @@ import { ref, reactive, onMounted, computed } from "vue";
   border-radius: 5px;
   border-style: none;
   cursor: pointer;
-}
+} */
 </style>

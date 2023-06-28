@@ -1,0 +1,44 @@
+/* Três formas de estilus css no vuejs: */
+/* 1) Css global no App.vue */
+/* 2) Criar separadamente um arquivo .css, e 
+      importar ele no main.js */
+/* 3) Tag <script scoped>, no próprio componente, 
+      que cria um atributo, "identificador único",
+      para cada elemento html do componente. */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+header {
+  line-height: 1.5;
+}
+
+[color-scheme="dark"] {
+  background-color: black;
+  color: white;
+}
+
+[color-scheme="light"] {
+  background-color: pink;
+  color: black;
+}
+
+.botao {
+  margin: 5px auto;
+  padding: 5px;
+  display: block;
+  background: darkcyan;
+  border-radius: 5px;
+  border-style: none;
+  cursor: pointer;
+}
+button:disabled,
+button[disabled] {
+  border: 1 px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: default;
+}

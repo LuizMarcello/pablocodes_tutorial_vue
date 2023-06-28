@@ -10,7 +10,7 @@
   <!-- <div class="pessoas" v-else> -->
   <div class="pessoas">
     <div v-for="pessoooa in pessoas" :key="pessoooa.id" v-if="!error">
-      <button @click="redirecionaFuncionario(pessoooa.id)">
+      <button class="botao" @click="redirecionaFuncionario(pessoooa.id)">
         Ver funcionário
       </button>
       <UsuarioEmit
@@ -87,6 +87,10 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+/* Seletor deep: */
+:deep(.aviso) {
+  color: red;
+}
 .pessoas {
   display: flex;
   flex-wrap: wrap;
